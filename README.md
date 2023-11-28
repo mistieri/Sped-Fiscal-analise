@@ -1,7 +1,8 @@
-# Estudos-Dados
-Olá!   
-Já que você chegou até aqui, vou explicar a que este repositório/portfólio se propõe: 
-Sou Contadora e Analista Tributária há mais de 10 anos e recentemente comecei a estudar Data Science e BI como formas de incrementar o meu trabalho.
-Os projetos que estarão aqui, portanto, estão voltados mais à área temática Contábil/Tributário/financeiro. Nada impedirá, porém, que coloque projetos de outras áreas também :-)
+# Análise de Sped fiscal
+Analisar um arquivo de Sped com base nas informações extraídas de registros como C100, C170, C190, etc. 
 
 
+# Bibliotecas
+* Pandas
+* Glob
+* Datetime
