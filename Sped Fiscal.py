@@ -4,11 +4,17 @@ import datetime
 
 print(datetime.datetime.now())
 
-data = ''
+data = '' #aqui ele faz a formatação correta das datas
 def FormatarData(variavel, num):
     global data
     data = variavel[num][:2] + '/' + variavel[num][2:4] + '/' + variavel[num][4:]
     return data
+
+chave = '' #é necessária a inserção de um caractere (nesse caso escolhi o ".") para colocar antes da chave da nota e não descaracterizar a formatação
+def FormatarChave(variavel, num):
+    global chave
+    chave = '.' + variavel[num]
+    return chave
 
 listaArquivos = []
 listaLinhas = []
@@ -25,7 +31,7 @@ for i in path_efd:
     df = open(i,'r', encoding="Latin-1")
 
     for line in df:
-        if '|0000|' in line:
+        if '|0000|' in line: # Registro 0000: Abertura do Arquivo Digital e Identificação da Pessoa Jurídica
             arq = line.split("|")
             FormatarData(arq, 4)
             dictCabecalho['DT_INI'] = data
@@ -89,7 +95,7 @@ for i in path_efd:
 
      # você pode acrescentar quantos 'Elif' quiser. Cada bloco com um tipo de registro
        
-        elif '|E001|' in line:
+        elif '|E001|' in line: 
             break
 
     listaArquivos.append({'cabecalho': dictCabecalho, 'linhas': listaLinhas})
@@ -99,6 +105,7 @@ meta=[
 ['cabecalho','DT_INI'],
 ['cabecalho','DT_FIN']])
 
-df.to_csv(r'C:\\SPED\\output\\resultfiscalc100.csv', sep=';', encoding='utf-8', index=False) # Nesta será gerada planilha com o arquivo de saída
+df.to_csv(r'C:\\SPED\\output\\arquivo_saida.csv', sep=';', encoding='utf-8', index=False) # Nesta será gerada planilha com o arquivo de saída
 
 print(datetime.datetime.now())
+print("Arquivo gerado com sucesso!")
